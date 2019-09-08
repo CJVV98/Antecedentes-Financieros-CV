@@ -10,13 +10,24 @@ import java.util.Date;
 
 /**
  *
- * @author Corin V
+ * @author Corin Viracacha
+ * Esta clase se encarga de almacenar la informacion referente a antecedentes
  */
 public class Antecedentes implements Serializable{
+    /**
+     * En fecha se almacena la fecha del reporte
+     * En descripcion una breve informacion sobre el reporte
+     * Es un objeto el cual almacena segun el tipo de antecedente presentado
+     */
     private Date fecha;
     private String descripcion;
     private TipoAntecendente tipo;
-
+    /**
+     * Constructor de la clase
+     * @param fecha se recibe la fecha del antecedente
+     * @param descripcion se hace un breve descripcion del antecedente
+     * @param tipo se infica el tipo de antecedente
+     */
     public Antecedentes(Date fecha, String descripcion, TipoAntecendente tipo) {
         this.fecha = fecha;
         this.descripcion = descripcion;

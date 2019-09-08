@@ -15,10 +15,13 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Corin V
+ * @author Corin Viracacha
+ * Esta clase se encarga de realizar las operaciones de registro del aplicativo
  */
 public class Logica {
-    
+    /**
+     * 
+     */
     List<Persona> listaPersona;
     List<TipoAntecendente> listaA;
     Scanner ingreso;
