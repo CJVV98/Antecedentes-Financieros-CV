@@ -18,9 +18,14 @@ import java.util.List;
 
 /**
  *
- * @author Corin V
+ * @author Corin Viracacha
+ * Clase encargada de la serializacion de la informacion y el guardado en archivos
  */
 public class Serializacion {
+    /**
+     * Metodo encargado de la serializacion del listado de tipos de antecedentes
+     * @param tipo listado de tipos de antecedentes
+     */
     public void serializarTipoA(List<TipoAntecendente> tipo){
         try{
             File archivo1=new File("src/main/java/archivo/listaTipoAntecedentes");
@@ -36,6 +41,10 @@ public class Serializacion {
         }
                  
     }
+    /**
+     * Metodo encargadao de la serializacion del listado de personas
+     * @param persona listado de personas registradas
+     */
     public void serializarPersona(List<Persona> persona){
         try{
             File archivo1=new File("src/main/java/archivo/listaPersona");
@@ -52,6 +61,10 @@ public class Serializacion {
         }
                  
     }
+    /**
+     * Metodo usado para la deserializacion de los tipos de antecedentes
+     * @return  listado de tipos de antecedentes
+     */
     public List<TipoAntecendente> deserializarTipo(){
         List<TipoAntecendente> listaT=null;
         try{
@@ -63,7 +76,11 @@ public class Serializacion {
         }catch (IOException | ClassNotFoundException io){
         }
        return listaT;          
-    } 
+    }
+    /**
+     * Metodo para la deserializacion del listado de personas
+     * @return listado de personas
+     */
     public List<Persona> deserializarPersona(){
             List<Persona> listaPersona=null;
             try{

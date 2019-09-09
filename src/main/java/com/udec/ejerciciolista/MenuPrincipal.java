@@ -7,10 +7,15 @@ package com.udec.ejerciciolista;
 
 /**
  *
- * @author Corin V
+ * @author Corin Viracacha
+ * Clase principal
  */
 public class MenuPrincipal {
+    /** 
+     * Menu principal
+     * @param arg 
+     */
     public static void main(String ...arg){
-        Logica l=new Logica();
+        Logica logica=new Logica();
     }
 }

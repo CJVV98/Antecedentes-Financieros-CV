@@ -16,16 +16,20 @@ import java.util.logging.Logger;
 /**
  *
  * @author Corin Viracacha
- * Esta clase se encarga de realizar las operaciones de registro del aplicativo
+ * Esta clase se encarga de realizar las operaciones principales del aplicativo
  */
 public class Logica {
     /**
-     * 
+     * listaPersona, variable que almacena la informacion de las personas y sus antecedentes
+     * listaA Almacena los tipos de antecedentes registrados
+     * ingreso, objeto para capturar datos ingresados por teclado
      */
     List<Persona> listaPersona;
     List<TipoAntecendente> listaA;
     Scanner ingreso;
-    
+    /**
+     * En este constructor, se muestra un menu con las operaciones a ejecutar
+     */
     public Logica(){ 
          ingreso=new Scanner(System.in);
          String continuar="s";     
@@ -47,8 +51,11 @@ public class Logica {
             System.out.println("Desea Continuar S/N");        
             continuar=ingreso.next();
          }while("s".equals(continuar.toLowerCase()));
-     }
-
+    }
+    /**
+     * En este menu se direcciona al metodo en relacion con la opcion seleccionada
+     * @param opcion, de operacion 
+     */
     private void validarMetodo(int opcion) {
         switch (opcion){
             case 1:
@@ -71,7 +78,9 @@ public class Logica {
                 break;
         }
     }
-
+    /**
+     * En este metodo se inserta los tipos de antecedentes
+     */
     private void insertarTipoA(){ 
         ingreso=new Scanner(System.in);
         if(listaA == null){
@@ -83,11 +92,13 @@ public class Logica {
             String caracteristicas=ingreso.nextLine();
             System.out.println("Ingrese Estado - 0 + ");
             String estado=ingreso.nextLine();
-            listaA.add(new TipoAntecendente('1',descripcion, caracteristicas, estado));
+            listaA.add(new TipoAntecendente(descripcion, caracteristicas, estado));
             (new Serializacion()).serializarTipoA(listaA);          
          }
     }
-
+    /**
+     * En este metodo se hace un registro de la persona se solicita nombre, cedula, edad y genero
+     */
     private void insertarPersona() { 
         ingreso=new Scanner(System.in);
         System.out.println("Digite su nombre");
@@ -103,7 +114,9 @@ public class Logica {
         (new Serializacion()).serializarPersona(listaPersona);
         System.out.println("Registro Exitoso ");
     }
-
+    /**
+     * En este metodo se da la posibilidad al usuario de editar los datos basicos de la persona
+     */
     private void editarPersona() {
         ingreso=new Scanner(System.in);
         System.out.println("Ingrese el numero identificacionde la persona a modificar "); 
@@ -122,7 +135,9 @@ public class Logica {
          System.out.println("Modificacion exitosa ");
         
     }
-
+    /**
+     * Metodo para adicionar antecedentes a la persona aqui se verifica si la persona existe
+     */
     private void adicionarAntecedentes() {
         int contador=0;
         ingreso=new Scanner(System.in);
@@ -141,7 +156,9 @@ public class Logica {
             (new Serializacion()).serializarPersona(listaPersona);
      
     }
-
+    /**
+     * Metodo para eliminar antecedentes negativos de las personas
+     */
     private void eliminarAntecedentes() {
         ingreso=new Scanner(System.in);
         System.out.println("Ingrese el numero identificacionde la persona a modificar "); 
@@ -163,7 +180,11 @@ public class Logica {
         }
         (new Serializacion()).serializarPersona(listaPersona);
     }
-
+    /**
+     * Una vez la persona ha sido verificada en este metodo se inserta los antecedentes de la persona
+     * @param personaAux objeto con la informacion de las personas
+     * @return Listado de antecedentes
+     */
     private List<Antecedentes> insertarAntecedente(Persona personaAux) {
          SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
          try {
@@ -187,7 +208,12 @@ public class Logica {
             }
          return personaAux.getAntecedentes();
     }
-
+    /**
+     * De acuerdo al atributo a modificar, en este metodo se solicita la nueva informacion de la persona
+     * @param persona objeto que contiene los datos de las persona
+     * @param opcion, contiene el indicador del dato a modificar
+     * 
+     */
     private void editarAtributo(Persona persona, int opcion) {
         ingreso=new Scanner(System.in);
         switch (opcion){
@@ -208,7 +234,9 @@ public class Logica {
             }
         }
     }
-
+    /**
+     * En este metodo se muestra al usuario los antecedentes de las persona buscada
+     */
     private void visualizarAntecedentes() {
         ingreso=new Scanner(System.in);
         System.out.println("Ingrese el numero identificacionde la persona a modificar "); 
@@ -222,7 +250,7 @@ public class Logica {
                         System.out.println("Fecha "+antecedentes.getFecha());
                         System.out.println("Descripcion "+antecedentes.getDescripcion());
                         System.out.println("Descripcion Antecedente "+antecedentes.getTipo().getDescripcion());
-                        System.out.println("Caracteristicas "+antecedentes.getTipo().getCarcateristicas());
+                        System.out.println("Caracteristicas "+antecedentes.getTipo().getCaracteristicas());
                         System.out.println("Estado "+antecedentes.getTipo().getDescripcion());
                     }
                 }  
