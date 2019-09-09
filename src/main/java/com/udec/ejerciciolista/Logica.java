@@ -93,6 +93,7 @@ public class Logica {
             System.out.println("Ingrese Estado - 0 + ");
             String estado=ingreso.nextLine();
             listaA.add(new TipoAntecendente(descripcion, caracteristicas, estado));
+            System.out.println("Registro Exitoso ");
             (new Serializacion()).serializarTipoA(listaA);          
          }
     }
@@ -129,10 +130,11 @@ public class Logica {
                 System.out.println("Seleccione el dato a editar "); 
                 int opcion=ingreso.nextInt();
                 editarAtributo(persona,opcion);
+                System.out.println("Modificacion exitosa ");
             }
         }
         (new Serializacion()).serializarPersona(listaPersona);
-         System.out.println("Modificacion exitosa ");
+         
         
     }
     /**
@@ -239,7 +241,7 @@ public class Logica {
      */
     private void visualizarAntecedentes() {
         ingreso=new Scanner(System.in);
-        System.out.println("Ingrese el numero identificacionde la persona a modificar "); 
+        System.out.println("Ingrese el numero identificacion de la persona a consultar "); 
         int cedula=ingreso.nextInt();
         for (Persona persona : listaPersona) {
             if(cedula==persona.getCedula()){
@@ -254,9 +256,7 @@ public class Logica {
                         System.out.println("Estado "+antecedentes.getTipo().getDescripcion());
                     }
                 }  
-            }
-           
-           
+            }           
         }
     }
 
